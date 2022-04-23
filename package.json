@@ -1,10 +1,10 @@
 {
   "name": "react-interview-starter-ts",
   "version": "0.1.0",
-  "homepage": "https://cezarybak.github.io/ecommerce-shop/",
+  "homepage": "https://cezarybak.github.io/ecommerce-shop",
   "private": true,
   "scripts": {
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp ./build/index.html ./build/404.html",
     "coverage": "cross-env NODE_ICU_DATA=node_modules/full-icu react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "start": "react-scripts start",

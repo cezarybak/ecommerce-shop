@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "https:https://cezarybak.github.io/ecommerce-shop/static/js/main.a3ad3400.js",
-    "index.html": "https:https://cezarybak.github.io/ecommerce-shop/index.html",
-    "main.a3ad3400.js.map": "https:https://cezarybak.github.io/ecommerce-shop/static/js/main.a3ad3400.js.map"
+    "main.js": "/static/js/main.a3ad3400.js",
+    "index.html": "/index.html",
+    "main.a3ad3400.js.map": "/static/js/main.a3ad3400.js.map"
   },
   "entrypoints": [
     "static/js/main.a3ad3400.js"

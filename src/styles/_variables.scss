@@ -1,0 +1,43 @@
+$purple: #4460f7;
+$purple_dark: #2140e8;
+$orange: #f9a52b;
+$light_grey_1: #f0f1f5;
+$light_grey_2: #e0e2ea;
+$light_grey_3: #b9bdcf;
+$dark_grey_1: #9194a5;
+$dark_grey_2: #1a1b1d;
+
+.logo {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: $dark_grey_2;
+}
+
+.h1-30-bold {
+  font-size: 1.875rem;
+  line-height: 2.5rem;
+  font-weight: 600;
+  color: $dark_grey_2;
+}
+
+.font-14-semi-bold {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  font-weight: 600;
+  color: $dark_grey_2;
+}
+
+.font-14-semi-bold-disabled {
+  @extend .font-14-semi-bold;
+  :disabled {
+    color: $dark_grey_1;
+  }
+}
+
+.font-14-semi-bold-active {
+  @extend .font-14-semi-bold;
+  :active {
+    color: $purple;
+  }
+}

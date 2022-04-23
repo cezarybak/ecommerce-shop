@@ -1,6 +1,7 @@
 {
   "name": "react-interview-starter-ts",
   "version": "0.1.0",
+  "homepage": "https://cezarybak.github.io/ecommerce-shop/",
   "private": true,
   "scripts": {
     "build": "react-scripts build",

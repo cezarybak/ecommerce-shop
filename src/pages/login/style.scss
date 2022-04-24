@@ -1,0 +1,29 @@
+@import '/src/styles/variables';
+
+.login-page {
+  display: flex;
+
+  &__image {
+    display: block;
+    width: 50%;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+    @media screen and (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  &__wraper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 5rem 0rem;
+  }
+
+  &__logo {
+  }
+
+  &__wraper {
+  }
+}

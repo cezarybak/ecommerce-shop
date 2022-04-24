@@ -1,5 +1,4 @@
 import { SearchContext, useSerachData } from 'context';
-import { AuthContext, useAuthData } from 'context/AuthContext/authContext';
 import { Login, Products } from 'pages';
 import { ProtectedRoute } from 'providers';
 import { Navigate, Route, Routes } from 'react-router-dom';

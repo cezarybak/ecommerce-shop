@@ -1,15 +1,13 @@
-import { SearchContext, useSerachData } from 'context';
+import { AuthContext, useAuthData } from 'context/AuthContext/authContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AppProvidersProps } from './AppProviders.types';
 
 export const AppProviders = ({ children }: AppProvidersProps) => {
-  const searchValue = useSerachData();
+  const authData = useAuthData();
 
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <SearchContext.Provider value={searchValue}>
-        {children}
-      </SearchContext.Provider>
+      <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>
     </Router>
   );
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ProductDto, ProductsService } from 'generated';
 import { useSearchContext } from 'hooks/useSerachContext';
 import { Pagination, Header, Element, Modal } from 'components';
-import useDebounce from 'hooks/useDebounce';
+import { useDebounce } from 'hooks';
 
 import './style.scss';
 

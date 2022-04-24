@@ -8,14 +8,14 @@ type SearchContextType = {
   isPromo: boolean;
   setIsPromo: Dispatch<SetStateAction<boolean>>;
   search: string;
-  setIsSearch: Dispatch<SetStateAction<string>>;
+  setSearch: Dispatch<SetStateAction<string>>;
 };
 
-const SerachData = () => {
+export const useSerachData = () => {
   const [page, setPage] = useState(1);
   const [isActive, setIsActive] = useState(false);
   const [isPromo, setIsPromo] = useState(false);
-  const [search, setIsSearch] = useState('');
+  const [search, setSearch] = useState('');
 
   return {
     page,
@@ -25,10 +25,10 @@ const SerachData = () => {
     isPromo,
     setIsPromo,
     search,
-    setIsSearch,
+    setSearch,
   };
 };
 
-export const SearchContext = createContext<SearchContextType>({
-  ...SerachData(),
-});
+export const SearchContext = createContext<SearchContextType | undefined>(
+  undefined,
+);

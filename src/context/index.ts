@@ -1,1 +1,1 @@
-export { SearchContext } from './SearchContext/searchContext';
+export { SearchContext, useSerachData } from './SearchContext/searchContext';

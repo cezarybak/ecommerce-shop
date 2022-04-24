@@ -43,8 +43,7 @@ export const Products = () => {
           ),
         )}
       </div>
-      {/* <Pagination /> */}
-      <div>{productList.totalPageCount}</div>
+      <Pagination totalPageCount={productList.totalPageCount} />
     </div>
   );
 };

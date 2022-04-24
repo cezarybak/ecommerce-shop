@@ -1,5 +1,27 @@
+import { useSearchContext } from 'hooks/useSerachContext';
 import './style.scss';
 
-export const Pagination = () => {
-  return <div>asasasasas</div>;
+type Props = {
+  totalPageCount?: number;
+};
+
+export const Pagination = ({ totalPageCount }: Props) => {
+  const { page, setPage } = useSearchContext();
+  const pageCountMap = [...Array(totalPageCount).keys()];
+
+  console.log(pageCountMap);
+
+  return (
+    <nav>
+      <div>
+        <ul>
+          {pageCountMap.map((e) => (
+            <li onClick={() => setPage(e + 1)} key={e}>
+              {e + 1}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
 };

@@ -9,8 +9,6 @@ export const Pagination = ({ totalPageCount }: Props) => {
   const { page, setPage } = useSearchContext();
   const pageCountMap = [...Array(totalPageCount).keys()];
 
-  console.log(pageCountMap);
-
   return (
     <nav>
       <div>

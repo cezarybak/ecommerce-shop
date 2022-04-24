@@ -2,20 +2,27 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductDto, ProductsService } from 'generated';
 import { useSearchContext } from 'hooks/useSerachContext';
-import { Pagination, Header } from 'components';
+import { Pagination, Header, Element, Modal } from 'components';
 import { AppRoute } from 'routing/AppRoute.enum';
+import useDebounce from 'hooks/useDebounce';
+
+type ProductListType = { items: ProductDto[]; totalPageCount: number };
 
 export const Products = () => {
   const [isLoading, setLoading] = useState(false);
-  const [productList, setProducts] = useState<
-    { items: ProductDto[]; totalPageCount: number } | undefined
-  >(undefined);
+  const [productList, setProducts] = useState<ProductListType | undefined>(
+    undefined,
+  );
+  const [isModelOpen, setModelOpen] = useState<number | null>(null);
+
   const { search, isActive, isPromo, page } = useSearchContext();
+
+  const debounceSearchTerm = useDebounce(search, 600);
 
   useEffect(() => {
     setLoading(true);
     ProductsService.productControllerFindAll(
-      search,
+      debounceSearchTerm,
       8,
       page,
       isPromo,
@@ -24,7 +31,7 @@ export const Products = () => {
       setLoading(false);
       setProducts({ items: e.items, totalPageCount: e.meta.totalPages });
     });
-  }, [search, isActive, isPromo, page]);
+  }, [debounceSearchTerm, isActive, isPromo, page]);
 
   if (!productList) {
     return <div>Halasasasasasko</div>;
@@ -37,13 +44,18 @@ export const Products = () => {
       <Link to={AppRoute.Login}> Login </Link>
       {!!isLoading && <div>Haloszkas</div>}
       <div>
-        {productList.items.map(
-          ({ id, description, image, active, name, promo, rating }) => (
-            <div key={id}>{description}</div>
-          ),
-        )}
+        {productList.items.map((item) => (
+          <Element key={item.id} {...item} setModelOpen={setModelOpen} />
+        ))}
       </div>
       <Pagination totalPageCount={productList.totalPageCount} />
+      {!!isModelOpen && (
+        <Modal
+          product={productList.items.find((e) => e.id === isModelOpen)}
+          isModelOpen={isModelOpen}
+          setModelOpen={setModelOpen}
+        />
+      )}
     </div>
   );
 };

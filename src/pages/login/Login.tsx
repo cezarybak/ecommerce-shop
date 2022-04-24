@@ -1,26 +1,64 @@
-import { Link } from "react-router-dom";
-import { AppRoute } from "components/routing/AppRoute.enum";
+import { useForm } from 'react-hook-form';
+import hero from 'assets/hero.png';
+import './style.scss';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { LoginUserDto, UsersService } from 'generated';
 
 export const Login = () => {
+  const schema = z.object({
+    username: z.string().min(1, { message: 'Required' }),
+    password: z.string().min(4, { message: 'Saasas' }),
+  });
+
+  const onSubmit = (data: LoginUserDto) => {
+    UsersService.appControllerLogin(data)
+      .then((e) => console.log(e))
+      .catch((e) => console.log(e));
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginUserDto>({
+    resolver: zodResolver(schema),
+  });
+
   return (
-    <>
-      <Link to={AppRoute.Home}>Products page</Link>
-      <h2>Login</h2>
-      <form>
-        <div>
-          <label>
-            username:
-            <input name="username" />
-          </label>
-        </div>
-        <div>
-          <label>
-            password:
-            <input name="password" type="password" />
-          </label>
-        </div>
-        <button type="submit">submit</button>
-      </form>
-    </>
+    <main className="login-page">
+      <img alt="hero-image" src={hero} className="login-page__image" />
+      <div className="login-page__wraper">
+        <h1 className="login-page__wraper__logo">join.tsh.io</h1>
+        <h2 className="login-page__header">Login</h2>
+        <form onSubmit={handleSubmit((data) => onSubmit(data))}>
+          <div>
+            <label>
+              Username
+              <input
+                {...register('username')}
+                name="username"
+                placeholder="Enter username"
+              />
+            </label>
+            {errors.username?.message && <p>{errors.username?.message}</p>}
+          </div>
+          <div>
+            <label>
+              Password
+              <input
+                {...register('password')}
+                name="password"
+                type="password"
+                placeholder="Enter password"
+              />
+            </label>
+            {errors.password?.message && <p>{errors.password?.message}</p>}
+          </div>
+          <button type="submit">submit</button>
+          <span>Forgot password?</span>
+        </form>
+      </div>
+    </main>
   );
 };

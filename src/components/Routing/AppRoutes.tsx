@@ -1,6 +1,6 @@
-import { Login, Products } from "pages";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { AppRoute } from "./AppRoute.enum";
+import { Login, Products } from 'pages';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { AppRoute } from './AppRoute.enum';
 
 export const AppRoutes = () => {
   return (

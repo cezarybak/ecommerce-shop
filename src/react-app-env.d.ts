@@ -7,3 +7,8 @@ declare namespace NodeJS {
     REACT_APP_CI: string;
   }
 }
+
+declare module '*.scss' {
+  const content: Record<string, string>;
+  export default content;
+}

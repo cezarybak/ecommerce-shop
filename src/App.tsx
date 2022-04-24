@@ -1,7 +1,7 @@
-import { AppProviders } from "providers/AppProviders";
-import { AppRoutes } from "components/routing/AppRoutes";
+import { AppProviders } from 'providers/AppProviders';
+import { AppRoutes } from 'components/Routing/AppRoutes';
 
-import "./App.scss";
+import './App.scss';
 
 export const App = () => {
   return (

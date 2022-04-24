@@ -13,7 +13,7 @@ export const Login = () => {
 
   const onSubmit = (data: LoginUserDto) => {
     UsersService.appControllerLogin(data)
-      .then((e) => console.log(e))
+      .then((e) => localStorage.setItem('auth', e.access_token))
       .catch((e) => console.log(e));
   };
 

@@ -8,8 +8,7 @@ import './style.scss';
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { isActive, setIsActive, search, setSearch, setIsPromo, isPromo } =
-    useSearchContext()!;
+  const { search, setSearch } = useSearchContext()!;
 
   return (
     <header className="header">

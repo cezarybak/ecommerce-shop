@@ -11,7 +11,7 @@ export const Products = () => {
 
   const { search, isActive, isPromo, page } = useSearchContext();
 
-  const getProducts = async () => {
+  useEffect(() => {
     setLoading(true);
     ProductsService.productControllerFindAll(
       search,
@@ -23,10 +23,6 @@ export const Products = () => {
       setLoading(false);
       setProducts(e.items);
     });
-  };
-
-  useEffect(() => {
-    getProducts();
   }, [search, isActive, isPromo, page]);
 
   return (
@@ -36,11 +32,9 @@ export const Products = () => {
       <Link to={AppRoute.Login}> Login </Link>
       {!!isLoading && <div>Haloszkas</div>}
       <div>
-        {productList.map(
-          ({ id, description, image, active, name, promo, rating }) => (
-            <div key={id}>{description}</div>
-          ),
-        )}
+        {productList.map(({ id, description }) => (
+          <div key={id}>{description}</div>
+        ))}
       </div>
     </>
   );

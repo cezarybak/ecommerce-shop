@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { isActive, setIsActive, search, setSearch, setIsPromo, isPromo } =
-    useSearchContext()!;
+  const { search, setSearch } = useSearchContext()!;
 
   return (
     <header>

@@ -1,5 +1,5 @@
-import { AppProviders } from 'providers/AppProviders';
-import { AppRoutes } from 'components/Routing/AppRoutes';
+import { AppProviders } from 'providers';
+import { AppRoutes } from 'routing';
 
 import './App.scss';
 

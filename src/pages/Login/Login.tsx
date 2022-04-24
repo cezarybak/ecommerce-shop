@@ -1,19 +1,28 @@
 import { useForm } from 'react-hook-form';
 import hero from 'assets/hero.png';
-import './style.scss';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { LoginUserDto, UsersService } from 'generated';
 
+import './style.scss';
+import { useAuth } from 'hooks';
+import { useNavigate } from 'react-router-dom';
+
 export const Login = () => {
+  const navigator = useNavigate();
+
   const schema = z.object({
     username: z.string().min(1, { message: 'Required' }),
     password: z.string().min(4, { message: 'Saasas' }),
   });
+  const { token, setToken } = useAuth();
 
   const onSubmit = (data: LoginUserDto) => {
     UsersService.appControllerLogin(data)
-      .then((e) => console.log(e))
+      .then((e) => {
+        setToken(e.access_token);
+        navigator('/');
+      })
       .catch((e) => console.log(e));
   };
 

@@ -1,3 +1,3 @@
-import { Header } from './Header/Header';
-export { AppRoutes } from './Routing/AppRoutes';
+export { Header } from './Header/Header';
 export { Search } from './Search/Search';
+export { Pagination } from './Pagination/Pagination';

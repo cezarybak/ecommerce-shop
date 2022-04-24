@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ProductDto, ProductsService } from 'generated';
 import { useSearchContext } from 'hooks/useSerachContext';
 import { Pagination, Header, Element, Modal } from 'components';
-import { AppRoute } from 'routing/AppRoute.enum';
 import useDebounce from 'hooks/useDebounce';
+
+import './style.scss';
 
 type ProductListType = { items: ProductDto[]; totalPageCount: number };
 
@@ -38,12 +38,9 @@ export const Products = () => {
   }
 
   return (
-    <div>
+    <main className="product-page">
       <Header />
-      <h2>Products page</h2>
-      <Link to={AppRoute.Login}> Login </Link>
-      {!!isLoading && <div>Haloszkas</div>}
-      <div>
+      <div className="list">
         {productList.items.map((item) => (
           <Element key={item.id} {...item} setModelOpen={setModelOpen} />
         ))}
@@ -56,6 +53,6 @@ export const Products = () => {
           setModelOpen={setModelOpen}
         />
       )}
-    </div>
+    </main>
   );
 };

@@ -1,0 +1,20 @@
+@import '/src/styles/variables';
+
+.pagination {
+  margin: auto;
+
+  & > ul {
+    margin: 56px 0px;
+    display: flex;
+    column-gap: 16px;
+    list-style: none;
+
+    & > li {
+    }
+
+    & > button {
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

@@ -19,17 +19,26 @@ export const Element = ({
   id,
   setModelOpen,
 }: Props) => {
-  return (
-    <div>
-      <img src={image} alt={`${id}-product-image`} />
-      <h3>{name}</h3>
-      <span>{description}</span>
+  const ratingMap = [...Array(5).keys()].map((e) => e + 1 <= rating);
 
-      <div>
-        <StarOffIcon />
-        <StarOnIcon />
+  console.log(rating, name);
+  return (
+    <div className="element">
+      <div className="img-wraper">
+        {!!promo && <span>Promo</span>}
+        <img src={image} alt={`${id}-product-image`} />
       </div>
-      <button onClick={() => setModelOpen(id)}>Show details</button>
+      <div className="content-wraper">
+        <h3>{name}</h3>
+        <span>{description}</span>
+
+        <div className="rating">
+          {ratingMap.map((e) => (e ? <StarOnIcon /> : <StarOffIcon />))}
+        </div>
+        <button disabled={active} onClick={() => setModelOpen(id)}>
+          Show details
+        </button>
+      </div>
     </div>
   );
 };

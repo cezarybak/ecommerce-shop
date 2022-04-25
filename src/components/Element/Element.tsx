@@ -1,6 +1,7 @@
 import { ReactComponent as StarOffIcon } from 'assets/svgIcons/starOffIcon.svg';
 import { ReactComponent as StarOnIcon } from 'assets/svgIcons/starOnIcon.svg';
 import { Button } from 'components';
+import { Badge } from 'components/Badge/Badge';
 import { ProductDto } from 'generated';
 import { Dispatch, SetStateAction } from 'react';
 
@@ -24,8 +25,8 @@ export const Element = ({
 
   return (
     <div className="element">
-      <div className="img-wraper">
-        {!!promo && <span>Promo</span>}
+      <div className="image-wraper">
+        {!!promo && <Badge>Promo</Badge>}
         <img src={image} alt={`${id}-product-image`} />
       </div>
       <div className="content-wraper">
@@ -34,11 +35,15 @@ export const Element = ({
 
         <div className="rating">
           {ratingMap.map((e, index) =>
-            e ? <StarOnIcon key={index} /> : <StarOffIcon key={index} />,
+            e ? (
+              <StarOnIcon className="star-icon" key={index} />
+            ) : (
+              <StarOffIcon className="star-icon" key={index} />
+            ),
           )}
         </div>
         <Button
-          value="asassa"
+          value={active ? 'Unavailable' : 'Show details'}
           type="button"
           bg="purple"
           disabled={active}

@@ -10,7 +10,12 @@ type Props = {
 
 export const Checkbox = ({ value, onChange, label }: Props) => (
   <div className="checkbox">
-    <input type="checkbox" checked={value} onChange={() => onChange} />
+    <input
+      id={label}
+      type="checkbox"
+      checked={value}
+      onChange={() => onChange}
+    />
     <label htmlFor={label}>{label}</label>
   </div>
 );

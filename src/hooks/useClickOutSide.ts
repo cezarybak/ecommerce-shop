@@ -17,7 +17,7 @@ export const useCickOutSide = (
     return () => {
       document.removeEventListener('mousedown', checkIfClickedOutside);
     };
-  }, [isModal]);
+  }, [isModal, setModal]);
 
   return {
     ref,

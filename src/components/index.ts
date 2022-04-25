@@ -1,4 +1,4 @@
-export { Spiner } from './Spiner/Spiner';
+export { Spiner } from './Spinner/Spiner';
 export { EmptyElement } from './EmptyElement/EmptyElement';
 export { Button } from './Button/Button';
 export { Avatar } from './Avatar/Avatar';

@@ -38,7 +38,7 @@ export const useLogin = () => {
         setLocalData(e.user, e.access_token);
         navigator('/');
       })
-      .catch((e) => {
+      .catch(() => {
         setErrorStatus(true);
         setLoading(false);
       });

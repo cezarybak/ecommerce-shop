@@ -2,13 +2,14 @@
 
 .button-block {
   text-align: center;
-  height: 38px;
+  padding: 16px 14px;
   border-radius: 4px;
   @extend .font-14-semi-bold;
   color: $white;
   outline: none;
   cursor: pointer;
   background-color: $purple;
+  border-color: $purple;
 
   &:hover {
     background-color: $purple_dark;
@@ -23,7 +24,7 @@
 
 .background-white {
   text-align: center;
-  height: 38px;
+  padding: 11px 24px;
   cursor: pointer;
   border-radius: 4px;
   border: 1px solid $purple;

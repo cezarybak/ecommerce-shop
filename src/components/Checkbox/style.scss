@@ -1,40 +1,21 @@
+@import '/src/styles/variables';
+
 .checkbox {
   display: flex;
   align-items: center;
-  height: 24px;
+  column-gap: 8px;
 
-  opacity: 0;
-  height: 0;
-  width: 0;
-
-  input + label {
-    display: inline-block;
-    width: 60px;
-    height: 30px;
+  & > input {
+    height: 24px;
+    width: 24px;
     cursor: pointer;
+
+    border: 1px solid $light_grey_2;
   }
 
   & > label {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 24px;
+    @extend .font-14-semi-bold;
     cursor: pointer;
-    padding-left: calc(24px + var(--space-2));
-    color: var(--gray-500);
-    font-size: var(--font-size-6);
-    line-height: var(--line-height-6);
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 22px;
-      height: 22px;
-      border: 1px solid var(--gray-200);
-      border-radius: var(--border-radius-4);
-      background-color: var(--white-100);
-    }
+    color: $dark_grey_2;
   }
 }

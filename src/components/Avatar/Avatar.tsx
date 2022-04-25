@@ -22,7 +22,7 @@ export const Avatar = () => {
         }}
       />
       {isModal && (
-        <div className="" onClick={() => removeLocalData()}>
+        <div className="modal-avatar" onClick={() => removeLocalData()}>
           Logout
         </div>
       )}

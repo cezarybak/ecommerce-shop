@@ -9,7 +9,7 @@
   flex-direction: column;
   overflow: hidden;
 
-  & > .img-wraper {
+  & > .image-wraper {
     height: 170px;
     width: 100%;
     & > img {
@@ -18,36 +18,33 @@
 
       object-fit: cover;
     }
-
-    & > span {
-      display: none;
-    }
   }
 
   & > .content-wraper {
     display: flex;
-    padding: 15px;
+    padding: 16px 16px 24px 16px;
     max-width: 100%;
     height: 100%;
     flex-direction: column;
-    flex-grow: 1;
 
-    & > .content {
-      & > h3 {
-        margin: 0px;
-        @extend .h3-18-semi-bold;
-      }
-
-      & > span {
-        @extend .font-14-semi-bold;
-      }
+    & > h3 {
+      margin: 0px;
+      @extend .h3-18-semi-bold;
     }
 
-    & > .content-bottom {
-      & > div {
-      }
-      & > button {
-      }
+    & > span {
+      @extend .font-14-semi-bold;
+      color: $dark_grey_1;
     }
+
+    & > .rating {
+      display: flex;
+      column-gap: 9px;
+    }
+  }
+
+  .star-icon {
+    width: 13px;
+    height: 13px;
   }
 }

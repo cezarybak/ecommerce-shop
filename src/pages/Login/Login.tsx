@@ -1,53 +1,13 @@
-import { Controller, useForm } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import hero from 'assets/hero.png';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { LoginUserDto, UsersService } from 'generated';
+import { useLogin } from 'hooks';
+import { Button, Input } from 'components';
 
 import './style.scss';
-import { useAuth } from 'hooks';
-import { useNavigate } from 'react-router-dom';
-import { Button, Input } from 'components';
-import { useState } from 'react';
 
 export const Login = () => {
-  const navigator = useNavigate();
-  const [errorStatus, setErrorStatus] = useState(false);
-  const [isLoading, setLoading] = useState(false);
-
-  const schema = z.object({
-    username: z.string().min(3, { message: 'Required' }),
-    password: z
-      .string()
-      .min(3, { message: 'Password must have at least 3 char' }),
-  });
-
-  const {
-    handleSubmit,
-    control,
-
-    formState: { isValid },
-  } = useForm<LoginUserDto>({
-    mode: 'onChange',
-    reValidateMode: 'onChange',
-    resolver: zodResolver(schema),
-  });
-
-  const { token, setToken } = useAuth();
-
-  const onSubmit = (data: LoginUserDto) => {
-    setLoading(true);
-    UsersService.appControllerLogin(data)
-      .then((e) => {
-        setLoading(false);
-        setToken(e.access_token);
-        navigator('/');
-      })
-      .catch((e) => {
-        setErrorStatus(true);
-        setLoading(false);
-      });
-  };
+  const { handleSubmit, onSubmit, control, errorStatus, isLoading, isValid } =
+    useLogin();
 
   return (
     <main className="login-page">
@@ -107,7 +67,6 @@ export const Login = () => {
             disabled={!isValid}
             type="submit"
           />
-
           <span>Forgot password?</span>
         </form>
       </div>

@@ -1,3 +1,4 @@
+export { Spiner } from './Spiner/Spiner';
 export { EmptyElement } from './EmptyElement/EmptyElement';
 export { Button } from './Button/Button';
 export { Avatar } from './Avatar/Avatart';

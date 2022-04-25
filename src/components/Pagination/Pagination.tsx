@@ -12,7 +12,7 @@ export const Pagination = ({ totalPageCount }: Props) => {
   return (
     <nav className="pagination">
       <ul>
-        <button disabled={page === 1} type="button">
+        <button disabled={page === 1} onClick={() => setPage(1)} type="button">
           First
         </button>
         {pageCountMap.map((e) => (
@@ -24,7 +24,11 @@ export const Pagination = ({ totalPageCount }: Props) => {
             {e + 1}
           </li>
         ))}
-        <button type="button" disabled={page === totalPageCount}>
+        <button
+          type="button"
+          onClick={() => setPage(totalPageCount!)}
+          disabled={page === totalPageCount}
+        >
           Last
         </button>
       </ul>

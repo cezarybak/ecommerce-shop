@@ -1,29 +1,50 @@
 import { UserDto } from 'generated';
-import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import { createContext, useState } from 'react';
 
 type AuthContextType = {
   token: string | null;
-  setToken: Dispatch<SetStateAction<string | null>>;
-  user: UserDto | undefined;
-  setUser: Dispatch<SetStateAction<UserDto | undefined>>;
+  user: UserDto | null;
+  setLocalData: (user: UserDto, token: string) => void;
+  removeLocalData: () => void;
 };
 
-const getLocalStorage = (name: string) => {
-  localStorage.getItem(name) ? JSON.parse(localStorage.getItem(name)!) : null;
-};
+const getLocalStorage = (name: string): any =>
+  JSON.parse(localStorage.getItem(name.toString())!);
 
-const saveLocalStorage = (data: UserDto, name: string) =>
+const removeLocalStorage = (name: string) => localStorage.removeItem(name);
+
+const saveLocalStorage = (name: string, data: UserDto | string | null) =>
   localStorage.setItem(name, JSON.stringify(data));
 
 export const useAuthData = () => {
-  const [token, setToken] = useState<string | null>(null);
-  const [user, setUser] = useState<UserDto | undefined>();
+  const [token, setToken] = useState<string | null>(
+    getLocalStorage('token') || null,
+  );
+  const [user, setUser] = useState<UserDto | null>(
+    getLocalStorage('user') || null,
+  );
+
+  const setLocalData = (user: UserDto, token: string) => {
+    saveLocalStorage('user', user);
+    saveLocalStorage('token', token);
+
+    setUser(user);
+    setToken(token);
+  };
+
+  const removeLocalData = () => {
+    removeLocalStorage('user');
+    removeLocalStorage('token');
+
+    setUser(null);
+    setToken(null);
+  };
 
   return {
+    removeLocalData,
+    setLocalData,
     token,
-    setToken,
     user,
-    setUser,
   };
 };
 

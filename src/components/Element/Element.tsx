@@ -22,7 +22,6 @@ export const Element = ({
 }: Props) => {
   const ratingMap = [...Array(5).keys()].map((e) => e + 1 <= rating);
 
-  console.log(rating, name);
   return (
     <div className="element">
       <div className="img-wraper">
@@ -34,12 +33,14 @@ export const Element = ({
         <span>{description}</span>
 
         <div className="rating">
-          {ratingMap.map((e) => (e ? <StarOnIcon /> : <StarOffIcon />))}
+          {ratingMap.map((e, index) =>
+            e ? <StarOnIcon key={index} /> : <StarOffIcon key={index} />,
+          )}
         </div>
         <Button
           value="asassa"
           type="button"
-          bg="white"
+          bg="purple"
           disabled={active}
           onClick={() => setModelOpen(id)}
         />

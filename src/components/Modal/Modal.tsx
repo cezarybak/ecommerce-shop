@@ -1,25 +1,26 @@
 import { ProductDto } from 'generated';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, RefObject, SetStateAction } from 'react';
 import { ReactComponent as CloseIcon } from 'assets/svgIcons/closeIcon.svg';
 import { ReactPortal } from 'providers';
 
 import './style.scss';
 
 type Props = {
-  isModelOpen: number | null;
-  setModelOpen: Dispatch<SetStateAction<number | null>>;
+  isModelOpen: number | boolean;
+  setModelOpen: Dispatch<SetStateAction<number | boolean>>;
   product: ProductDto | undefined;
+  ref: RefObject<HTMLDivElement>;
 };
 
-export const Modal = ({ setModelOpen, product }: Props) => {
+export const Modal = ({ setModelOpen, product, ref }: Props) => {
   const { description, name, image } = product!;
 
   return (
     <ReactPortal wrapperId="modal-container">
-      <div className="modal">
+      <div ref={ref} className="modal">
         <div className="modal-content">
           <div className="image-wraper">
-            <CloseIcon className="icon" onClick={() => setModelOpen(null)} />
+            <CloseIcon className="icon" onClick={() => setModelOpen(false)} />
             <img src={image} />
           </div>
           <div className="content-wraper">

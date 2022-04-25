@@ -1,4 +1,4 @@
-import { Input, Checkbox, Avatar, Button } from 'components';
+import { Input, Avatar, Button, Checkbox } from 'components';
 import { useAuth } from 'hooks';
 import { useSearchContext } from 'hooks/useSerachContext';
 import { useNavigate } from 'react-router-dom';
@@ -7,8 +7,9 @@ import './style.scss';
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { search, setSearch } = useSearchContext()!;
-  const { removeLocalData } = useAuth();
+  const { search, setSearch, isActive, isPromo, setIsActive, setIsPromo } =
+    useSearchContext()!;
+  const { token } = useAuth();
 
   return (
     <header className="header">
@@ -23,17 +24,28 @@ export const Header = () => {
             isSearch
           />
           <div>
-            <Checkbox />
-            <Checkbox />
+            <Checkbox
+              value={isActive}
+              label="Active"
+              onChange={() => setIsActive(true)}
+            />
+            <Checkbox
+              value={isPromo}
+              label="Promo"
+              onChange={() => setIsPromo(true)}
+            />
           </div>
         </div>
-        <Button
-          bg="white"
-          type="button"
-          value="saasas"
-          onClick={() => removeLocalData()}
-        />
-        <Avatar />
+        {token ? (
+          <Avatar />
+        ) : (
+          <Button
+            bg="white"
+            type="button"
+            value="Log in"
+            onClick={() => navigate('/login', { replace: true })}
+          />
+        )}
       </div>
     </header>
   );

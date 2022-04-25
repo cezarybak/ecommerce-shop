@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction } from 'react';
 import './style.scss';
 
 type Props = ProductDto & {
-  setModelOpen: Dispatch<SetStateAction<number | null>>;
+  setModelOpen: Dispatch<SetStateAction<number | boolean>>;
 };
 
 export const Element = ({

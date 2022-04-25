@@ -1,4 +1,4 @@
-import { useProducts } from 'hooks';
+import { useCickOutSide, useProducts } from 'hooks';
 import {
   Pagination,
   Header,
@@ -12,8 +12,9 @@ import './style.scss';
 import { useState } from 'react';
 
 export const Products = () => {
-  const [isModelOpen, setModelOpen] = useState<number | null>(null);
+  const [isModelOpen, setModelOpen] = useState<number | boolean>(false);
   const { isLoading, productList } = useProducts();
+  const { ref } = useCickOutSide(isModelOpen, setModelOpen);
 
   return (
     <main className="product-page">
@@ -36,6 +37,7 @@ export const Products = () => {
       )}
       {!!isModelOpen && (
         <Modal
+          ref={ref}
           product={productList?.items.find((e) => e.id === isModelOpen)}
           isModelOpen={isModelOpen}
           setModelOpen={setModelOpen}

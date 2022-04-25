@@ -1,20 +1,48 @@
 @import '/src/styles/variables';
 
 .pagination {
-  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
   & > ul {
     margin: 56px 0px;
     display: flex;
+    align-items: center;
     column-gap: 16px;
     list-style: none;
+    padding-inline-start: 0px;
 
     & > li {
+      @extend .font-14-semi-bold;
+      color: $dark_grey_2;
+      margin: 0px;
+      cursor: pointer;
     }
 
     & > button {
+      margin: 0px;
       border: none;
       cursor: pointer;
+      @extend .font-14-semi-bold;
+      color: $dark_grey_2;
+
+      &:disabled {
+        cursor: not-allowed;
+        color: $dark_grey_1;
+      }
     }
   }
+}
+
+.pagination-acitve {
+  @extend .font-14-semi-bold;
+  color: $purple;
+  cursor: pointer;
+}
+
+.pagination-nopointer {
+  @extend .font-14-semi-bold;
+  color: $dark_grey_2;
+  cursor: default;
 }

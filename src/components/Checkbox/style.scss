@@ -1,0 +1,21 @@
+@import '/src/styles/variables';
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  & > input {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+
+    border: 1px solid $light_grey_2;
+  }
+
+  & > label {
+    @extend .font-14-semi-bold;
+    cursor: pointer;
+    color: $dark_grey_2;
+  }
+}

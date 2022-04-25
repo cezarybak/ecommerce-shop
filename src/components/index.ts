@@ -1,7 +1,7 @@
-export { Spiner } from './Spiner/Spiner';
+export { Spiner } from './Spinner/Spiner';
 export { EmptyElement } from './EmptyElement/EmptyElement';
 export { Button } from './Button/Button';
-export { Avatar } from './Avatar/Avatart';
+export { Avatar } from './Avatar/Avatar';
 export { Checkbox } from './Checkbox/Checkbox';
 export { Modal } from './Modal/Modal';
 export { Element } from './Element/Element';

@@ -2,12 +2,14 @@
 
 .button-block {
   text-align: center;
-  height: 38px;
+  padding: 16px 14px;
   border-radius: 4px;
   @extend .font-14-semi-bold;
   color: $white;
   outline: none;
+  cursor: pointer;
   background-color: $purple;
+  border-color: $purple;
 
   &:hover {
     background-color: $purple_dark;
@@ -18,22 +20,26 @@
     cursor: not-allowed;
     background-color: $dark_grey_1;
   }
+}
 
-  .background-purple {
-    background-color: $white;
-    border: 1px solid $purple;
-    color: $purple;
+.background-white {
+  text-align: center;
+  padding: 11px 24px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid $purple;
+  background-color: $white;
+  color: $purple;
 
-    &:hover {
-      color: $purple_dark;
-      border-color: $purple_dark;
-    }
+  &:hover {
+    color: $purple_dark;
+    border-color: $purple_dark;
+  }
 
-    &:disabled {
-      color: $dark_grey_1;
-      border-color: $dark_grey_1;
-      border-color: none;
-      cursor: not-allowed;
-    }
+  &:disabled {
+    color: $dark_grey_1;
+    border-color: $dark_grey_1;
+    border-color: none;
+    cursor: not-allowed;
   }
 }

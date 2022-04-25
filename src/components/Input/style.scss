@@ -1,7 +1,7 @@
 @import '/src/styles/variables';
 
 .search {
-  display: flex;
+  position: relative;
   flex-direction: column;
   row-gap: 8px;
 
@@ -19,8 +19,10 @@
       padding-right: 40px;
     }
 
-    &__icon {
+    & > .search__icon {
       position: relative;
+      width: 24px;
+      height: 24px;
       right: 20px;
     }
   }

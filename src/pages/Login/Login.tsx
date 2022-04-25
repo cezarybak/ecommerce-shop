@@ -62,7 +62,7 @@ export const Login = () => {
             )}
           />
           <Button
-            bg="white"
+            bg="purple"
             value={isLoading ? 'Loading..' : 'Log in'}
             disabled={!isValid}
             type="submit"

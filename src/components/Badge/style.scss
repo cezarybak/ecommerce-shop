@@ -1,0 +1,13 @@
+@import '/src/styles/variables';
+
+.badge {
+  position: absolute;
+  top: 18px;
+
+  & > span {
+    background-color: $orange;
+    padding: 4px 16px;
+    @extend .font-14-semi-bold;
+    color: $white;
+  }
+}

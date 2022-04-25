@@ -2,15 +2,21 @@ import './style.scss';
 
 type Props = {
   value: string;
-  disabled: boolean;
+  disabled?: boolean;
   type: 'button' | 'submit';
   bg: 'white' | 'purple';
   onClick?: () => void;
 };
 
-export const Button = ({ value, disabled, type, bg, onClick }: Props) => (
+export const Button = ({
+  value,
+  disabled,
+  type,
+  bg = 'purple',
+  onClick,
+}: Props) => (
   <button
-    className={`button-block ${bg === 'white' && 'background-purple'} `}
+    className={` ${bg === 'white' ? 'background-white' : 'button-block'}`}
     disabled={disabled}
     type={type}
     onClick={onClick}

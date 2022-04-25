@@ -16,7 +16,7 @@ const schema = z.object({
 export const useLogin = () => {
   const [errorStatus, setErrorStatus] = useState(false);
   const [isLoading, setLoading] = useState(false);
-  const { token, setToken } = useAuth();
+  const { setLocalData } = useAuth();
   const navigator = useNavigate();
 
   const {
@@ -35,10 +35,10 @@ export const useLogin = () => {
     UsersService.appControllerLogin(data)
       .then((e) => {
         setLoading(false);
-        setToken(e.access_token);
+        setLocalData(e.user, e.access_token);
         navigator('/');
       })
-      .catch((e) => {
+      .catch(() => {
         setErrorStatus(true);
         setLoading(false);
       });

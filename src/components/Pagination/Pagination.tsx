@@ -1,3 +1,4 @@
+import { usePagination } from 'hooks';
 import { useSearchContext } from 'hooks/useSerachContext';
 import './style.scss';
 
@@ -7,7 +8,7 @@ type Props = {
 
 export const Pagination = ({ totalPageCount }: Props) => {
   const { page, setPage } = useSearchContext();
-  const pageCountMap = [...Array(totalPageCount).keys()];
+  const { countMap } = usePagination(totalPageCount!);
 
   return (
     <nav className="pagination">
@@ -15,15 +16,29 @@ export const Pagination = ({ totalPageCount }: Props) => {
         <button disabled={page === 1} onClick={() => setPage(1)} type="button">
           First
         </button>
-        {pageCountMap.map((e) => (
-          <li
-            className={`${e === page && ''}`}
-            onClick={() => setPage(e + 1)}
-            key={e}
-          >
-            {e + 1}
-          </li>
-        ))}
+        {countMap.map((e, index) => {
+          const typeOfElement = typeof e;
+
+          return (
+            <>
+              {typeOfElement === 'number' ? (
+                <li
+                  className={`${e === page && 'pagination-acitve'}`}
+                  onClick={() => {
+                    setPage(Number(e));
+                  }}
+                  key={index}
+                >
+                  {e}
+                </li>
+              ) : (
+                <li key={index} className="pagination-nopointer">
+                  {e}
+                </li>
+              )}
+            </>
+          );
+        })}
         <button
           type="button"
           onClick={() => setPage(totalPageCount!)}

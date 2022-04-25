@@ -1,6 +1,5 @@
+import { Input, Checkbox } from 'components';
 import { Avatar } from 'components/Avatar/Avatart';
-import { Checkbox } from 'components/Checkbox/Checkbox';
-import { Search } from 'components/Search/Search';
 import { useSearchContext } from 'hooks/useSerachContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,7 +13,13 @@ export const Header = () => {
     <header className="header">
       <h2 onClick={() => navigate('/')}>join.tsh.ui</h2>
       <div>
-        <Search search={search} setSearch={setSearch} />
+        <Input
+          type="text"
+          placeholder="Search"
+          search={search}
+          setSearch={setSearch}
+          isSearch
+        />
         <div>
           <Checkbox />
           <Checkbox />

@@ -1,5 +1,6 @@
 import { ReactComponent as StarOffIcon } from 'assets/svgIcons/starOffIcon.svg';
 import { ReactComponent as StarOnIcon } from 'assets/svgIcons/starOnIcon.svg';
+import { Button } from 'components';
 import { ProductDto } from 'generated';
 import { Dispatch, SetStateAction } from 'react';
 
@@ -35,9 +36,13 @@ export const Element = ({
         <div className="rating">
           {ratingMap.map((e) => (e ? <StarOnIcon /> : <StarOffIcon />))}
         </div>
-        <button disabled={active} onClick={() => setModelOpen(id)}>
-          Show details
-        </button>
+        <Button
+          value="asassa"
+          type="button"
+          bg="white"
+          disabled={active}
+          onClick={() => setModelOpen(id)}
+        />
       </div>
     </div>
   );

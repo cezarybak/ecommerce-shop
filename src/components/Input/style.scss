@@ -1,0 +1,31 @@
+@import '/src/styles/variables';
+
+.search {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    & > input {
+      border-radius: 8px;
+      border: 1px solid $light_grey_2;
+      outline: none;
+      padding: 16px;
+      width: 100%;
+      padding-right: 40px;
+    }
+
+    &__icon {
+      position: relative;
+      right: 20px;
+    }
+  }
+
+  .border-error {
+    border-color: brown;
+  }
+}

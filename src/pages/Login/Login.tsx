@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import hero from 'assets/hero.png';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -7,64 +7,107 @@ import { LoginUserDto, UsersService } from 'generated';
 import './style.scss';
 import { useAuth } from 'hooks';
 import { useNavigate } from 'react-router-dom';
+import { Button, Input } from 'components';
+import { useState } from 'react';
 
 export const Login = () => {
   const navigator = useNavigate();
+  const [errorStatus, setErrorStatus] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const schema = z.object({
-    username: z.string().min(1, { message: 'Required' }),
-    password: z.string().min(4, { message: 'Saasas' }),
+    username: z.string().min(3, { message: 'Required' }),
+    password: z
+      .string()
+      .min(3, { message: 'Password must have at least 3 char' }),
   });
+
+  const {
+    handleSubmit,
+    control,
+
+    formState: { isValid },
+  } = useForm<LoginUserDto>({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+    resolver: zodResolver(schema),
+  });
+
   const { token, setToken } = useAuth();
 
   const onSubmit = (data: LoginUserDto) => {
+    setLoading(true);
     UsersService.appControllerLogin(data)
       .then((e) => {
+        setLoading(false);
         setToken(e.access_token);
         navigator('/');
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        setErrorStatus(true);
+        setLoading(false);
+      });
   };
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginUserDto>({
-    resolver: zodResolver(schema),
-  });
 
   return (
     <main className="login-page">
       <img alt="hero-image" src={hero} className="login-page__image" />
-      <div className="login-page__wraper">
-        <h1 className="login-page__wraper__logo">join.tsh.io</h1>
-        <h2 className="login-page__header">Login</h2>
+      <div className="login-wraper">
+        <h3>join.tsh.io</h3>
         <form onSubmit={handleSubmit((data) => onSubmit(data))}>
-          <div>
-            <label>
-              Username
-              <input
-                {...register('username')}
-                name="username"
-                placeholder="Enter username"
-              />
-            </label>
-            {errors.username?.message && <p>{errors.username?.message}</p>}
-          </div>
-          <div>
-            <label>
-              Password
-              <input
-                {...register('password')}
-                name="password"
-                type="password"
-                placeholder="Enter password"
-              />
-            </label>
-            {errors.password?.message && <p>{errors.password?.message}</p>}
-          </div>
-          <button type="submit">submit</button>
+          <h2>Login</h2>
+          <Controller
+            control={control}
+            name="username"
+            render={({
+              field: { onChange, value, ref, onBlur },
+              fieldState: { error },
+            }) => (
+              <div className="input-wraper">
+                <Input
+                  error={errorStatus}
+                  onBlur={onBlur}
+                  type="text"
+                  label="Username"
+                  placeholder="Enter username"
+                  setSearch={onChange}
+                  search={value}
+                  ref={ref}
+                />
+                {error?.message && <p>{error.message}</p>}
+              </div>
+            )}
+          />
+
+          <Controller
+            control={control}
+            name="password"
+            render={({
+              field: { onChange, value, ref, onBlur },
+              fieldState: { error },
+            }) => (
+              <div className="input-wraper">
+                <Input
+                  error={errorStatus}
+                  onBlur={onBlur}
+                  type="password"
+                  label="Password"
+                  placeholder="Enter password"
+                  setSearch={onChange}
+                  search={value}
+                  ref={ref}
+                />
+                {error?.message && <p>{error.message}</p>}
+              </div>
+            )}
+          />
+          <Button
+            bg="white"
+            value={isLoading ? 'Loading..' : 'Log in'}
+            disabled={!isValid}
+            type="submit"
+          />
+
           <span>Forgot password?</span>
         </form>
       </div>

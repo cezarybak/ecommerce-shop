@@ -1,4 +1,10 @@
-import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useState,
+  useEffect,
+} from 'react';
 
 type SearchContextType = {
   page: number;
@@ -16,6 +22,10 @@ export const useSerachData = () => {
   const [isActive, setIsActive] = useState(false);
   const [isPromo, setIsPromo] = useState(false);
   const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    setPage(1);
+  }, [search, isPromo, isActive]);
 
   return {
     page,

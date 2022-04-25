@@ -2,8 +2,9 @@
 
 .login-page {
   display: flex;
+  width: 100%;
 
-  &__image {
+  & > img {
     display: block;
     width: 50%;
     background-repeat: no-repeat;
@@ -14,16 +15,50 @@
     }
   }
 
-  &__wraper {
+  & > .login-wraper {
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 5rem 0rem;
+    margin: 0px auto;
+
+    @media screen and (max-width: $mobile) {
+      padding: 16px;
+      margin-left: 0ch;
+    }
+    & > h3 {
+      margin: 0;
+      @extend .logo;
+    }
+
+    & > form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 22px;
+      margin: auto 0px;
+      width: 75%;
+
+      & > h2 {
+        margin: 0;
+        margin-top: 40px;
+        @extend .h1-30-bold;
+      }
+
+      @media screen and (max-width: $mobile) {
+        width: 100%;
+      }
+
+      & > span {
+        @extend .font-14-semi-bold;
+      }
+    }
   }
 
-  &__logo {
-  }
-
-  &__wraper {
+  .input-wraper {
+    & > p {
+      margin: 0px;
+      margin-left: 8px;
+      font-size: 12px;
+      color: purple;
+    }
   }
 }

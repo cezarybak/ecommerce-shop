@@ -1,5 +1,9 @@
+export { EmptyElement } from './EmptyElement/EmptyElement';
+export { Button } from './Button/Button';
+export { Avatar } from './Avatar/Avatart';
+export { Checkbox } from './Checkbox/Checkbox';
 export { Modal } from './Modal/Modal';
 export { Element } from './Element/Element';
 export { Header } from './Header/Header';
-export { Search } from './Search/Search';
+export { Input } from './Input/Input';
 export { Pagination } from './Pagination/Pagination';

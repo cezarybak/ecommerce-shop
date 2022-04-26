@@ -16,6 +16,10 @@
     background-repeat: no-repeat;
     height: 100vh;
 
+    @media screen and (max-width: $tablet) {
+      width: 50%;
+    }
+
     @media screen and (max-width: $mobile) {
       display: none;
     }

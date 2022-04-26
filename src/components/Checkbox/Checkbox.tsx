@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import { ReactComponent as CheckIcon } from 'assets/svgIcons/checkIcon.svg';
 
 import './style.scss';

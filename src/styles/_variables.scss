@@ -5,12 +5,14 @@ $light_grey_1: #f0f1f5;
 $light_grey_2: #e0e2ea;
 $light_grey_3: #b9bdcf;
 $light_grey_4: #f2f2f2;
+$light_gray_5: #f8f8fa;
 $dark_grey_1: #9194a5;
 $dark_grey_2: #1a1b1d;
 $white: #ffff;
 $error: #610a0a;
 
 $mobile: 36rem;
+$tablet: 83rem;
 
 .logo {
   font-weight: 600;
@@ -33,6 +35,13 @@ $mobile: 36rem;
   font-weight: 600;
 }
 
+.h2-24-semi-bold {
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+  color: $dark_grey_2;
+  font-weight: 600;
+}
+
 .font-14-semi-bold {
   font-size: 0.875rem;
   line-height: 1rem;
@@ -44,4 +53,11 @@ $mobile: 36rem;
   font-weight: 600;
   line-height: 0.875rem;
   color: $error;
+}
+
+.font-18-semi-bold {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: $dark_grey_1;
 }

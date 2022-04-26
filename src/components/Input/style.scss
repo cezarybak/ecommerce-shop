@@ -1,11 +1,17 @@
 @import '/src/styles/variables';
 
 .search {
-  position: relative;
+  display: flex;
   flex-direction: column;
   row-gap: 8px;
 
+  & > label {
+    @extend .font-14-semi-bold;
+    color: $dark_grey_2;
+  }
+
   & > div {
+    width: 100%;
     display: flex;
     align-items: center;
     position: relative;
@@ -17,17 +23,31 @@
       padding: 16px;
       width: 100%;
       padding-right: 40px;
+      @extend .font-14-semi-bold;
+      color: $dark_grey_2;
+
+      &::placeholder {
+        @extend .font-14-semi-bold;
+        color: $dark_grey_2;
+      }
     }
 
     & > .search__icon {
-      position: relative;
-      width: 24px;
-      height: 24px;
+      position: absolute;
+      width: 18px;
+      height: 18px;
       right: 20px;
     }
   }
 
+  .placeholder-gray {
+    &::placeholder {
+      @extend .font-14-semi-bold;
+      color: $dark_grey_1;
+    }
+  }
+
   .border-error {
-    border-color: brown;
+    border: 1px solid $error;
   }
 }

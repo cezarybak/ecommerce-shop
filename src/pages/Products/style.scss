@@ -4,19 +4,32 @@
   display: flex;
   flex-direction: column;
   margin: auto;
+
+  width: 100%;
   background-color: $light_grey_4;
 
-  & > .list {
-    min-height: 75ch;
-    width: 90%;
-    margin: auto;
+  & > .wraper {
+    margin: 0 auto;
     margin-top: 56px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px 24px;
+    width: 90%;
 
+    & > .container {
+      min-height: 95ch;
+      margin-top: 56px;
+      width: 100%;
+      margin: auto 0;
+      & > .list {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px 24px;
+        @media screen and (max-width: $mobile) {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    }
     @media screen and (max-width: $mobile) {
-      grid-template-columns: repeat(1, 1fr);
+      margin-top: 24px;
     }
   }
 }

@@ -2,20 +2,27 @@
 
 .checkbox {
   display: flex;
+  cursor: pointer;
   align-items: center;
   column-gap: 8px;
 
-  & > input {
+  .checkbox-border {
     height: 24px;
     width: 24px;
-    cursor: pointer;
-
     border: 1px solid $light_grey_2;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
   }
 
-  & > label {
+  .checkbox-active {
+    border-color: blue;
+    background: blue;
+    stroke: white;
+  }
+
+  .text {
+    margin-top: 2px;
     @extend .font-14-semi-bold;
-    cursor: pointer;
-    color: $dark_grey_2;
   }
 }

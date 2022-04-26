@@ -8,3 +8,4 @@ export { Element } from './Element/Element';
 export { Header } from './Header/Header';
 export { Input } from './Input/Input';
 export { Pagination } from './Pagination/Pagination';
+export { Form } from './Form/Form';

@@ -7,10 +7,14 @@ import { z } from 'zod';
 import { useAuth } from './useAuth';
 
 const schema = z.object({
-  username: z.string().min(3, { message: 'Required' }),
+  username: z
+    .string()
+    .nonempty({ message: 'The user required' })
+    .min(3, { message: 'The user must be at least 3 characters' }),
   password: z
     .string()
-    .min(3, { message: 'Password must have at least 3 char' }),
+    .nonempty({ message: 'The password required' })
+    .min(3, { message: 'The password must be at least 3 characters' }),
 });
 
 export const useLogin = () => {

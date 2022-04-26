@@ -13,32 +13,30 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <div>
-        <div>
-          <h2 onClick={() => navigate('/')}>join.tsh.ui</h2>
-          <div>
-            <Input
-              type="text"
-              placeholder="Search"
-              search={search}
-              setSearch={setSearch}
-              isSearch
-            />
-            <div>
-              <Checkbox
-                value={isActive}
-                label="Active"
-                onChange={() => setIsActive(true)}
-              />
-              <Checkbox
-                value={isPromo}
-                label="Promo"
-                onChange={() => setIsPromo(true)}
-              />
-            </div>
-          </div>
+      <div className="container">
+        <h2 onClick={() => navigate('/')}>join.tsh.ui</h2>
+        <div className="search-wraper">
+          <Input
+            type="text"
+            placeholder="Search"
+            search={search}
+            setSearch={setSearch}
+            isSearch
+          />
         </div>
-        <div>
+        <div className="checkbox-wraper">
+          <Checkbox
+            value={isActive}
+            label="Active"
+            onChange={() => setIsActive((prev) => (prev ? undefined : true))}
+          />
+          <Checkbox
+            value={isPromo}
+            label="Promo"
+            onChange={() => setIsPromo((prev) => (prev ? undefined : true))}
+          />
+        </div>
+        <div className="navigation-wraper">
           {token ? (
             <Avatar />
           ) : (

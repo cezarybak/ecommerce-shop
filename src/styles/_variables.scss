@@ -8,6 +8,7 @@ $light_grey_4: #f2f2f2;
 $dark_grey_1: #9194a5;
 $dark_grey_2: #1a1b1d;
 $white: #ffff;
+$error: #610a0a;
 
 $mobile: 36rem;
 
@@ -36,4 +37,11 @@ $mobile: 36rem;
   font-size: 0.875rem;
   line-height: 1rem;
   font-weight: 600;
+}
+
+.font-12-error {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 0.875rem;
+  color: $error;
 }

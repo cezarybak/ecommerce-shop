@@ -22,18 +22,26 @@ export const Products = () => {
       {isLoading ? (
         <Spiner />
       ) : (
-        <>
-          <div className="list">
-            {!productList ? (
+        <div className="wraper">
+          <div className="container">
+            {!productList?.items.length || 0 ? (
               <EmptyElement />
             ) : (
-              productList.items.map((item) => (
-                <Element key={item.id} {...item} setModelOpen={setModelOpen} />
-              ))
+              <>
+                <div className="list">
+                  {productList.items.map((item) => (
+                    <Element
+                      key={item.id}
+                      {...item}
+                      setModelOpen={setModelOpen}
+                    />
+                  ))}
+                </div>
+                <Pagination totalPageCount={productList?.totalPageCount} />
+              </>
             )}
           </div>
-          <Pagination totalPageCount={productList?.totalPageCount} />
-        </>
+        </div>
       )}
       {!!isModelOpen && (
         <Modal

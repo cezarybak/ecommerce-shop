@@ -29,11 +29,14 @@ export const Input = ({
 }: Props) => {
   return (
     <div className="search">
-      {!!label && <label htmlFor="">{label}</label>}
+      {!!label && <label htmlFor={label}>{label}</label>}
       <div>
         <input
+          id={label}
           onBlur={onBlur}
-          className={`search__input ${error && 'border-error'} `}
+          className={`search__input ${error && 'border-error'} ${
+            !isSearch && 'placeholder-gray'
+          } `}
           placeholder={placeholder}
           type={type}
           ref={ref}

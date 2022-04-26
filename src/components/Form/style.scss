@@ -1,0 +1,39 @@
+@import '/src/styles/variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  width: 65%;
+
+  @media screen and (max-width: $mobile) {
+    width: 100%;
+  }
+
+  & > h2 {
+    margin-bottom: 29px;
+    @extend .h1-30-bold;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 22px;
+    margin-bottom: 56px;
+  }
+
+  & > span {
+    @extend .font-14-semi-bold;
+    color: $dark_grey_1;
+    margin-top: 16px;
+    text-decoration: underline $dark_grey_1 1px;
+    cursor: pointer;
+  }
+}
+
+.message-error {
+  margin: 0px;
+  margin-top: 8px;
+  @extend .font-12-error;
+  color: $error;
+}

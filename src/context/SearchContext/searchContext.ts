@@ -6,7 +6,7 @@ import {
   useEffect,
 } from 'react';
 
-type SearchContextType = {
+interface SearchContextType {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
   isActive: boolean | undefined;
@@ -15,7 +15,7 @@ type SearchContextType = {
   setIsPromo: Dispatch<SetStateAction<boolean | undefined>>;
   search: string;
   setSearch: Dispatch<SetStateAction<string>>;
-};
+}
 
 export const useSerachData = () => {
   const [page, setPage] = useState(1);

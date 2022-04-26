@@ -2,9 +2,9 @@ import { usePagination } from 'hooks';
 import { useSearchContext } from 'hooks/useSerachContext';
 import './style.scss';
 
-type Props = {
+interface Props {
   totalPageCount?: number;
-};
+}
 
 export const Pagination = ({ totalPageCount }: Props) => {
   const { page, setPage } = useSearchContext();

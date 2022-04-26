@@ -2,11 +2,11 @@ import { ReactComponent as CheckIcon } from 'assets/svgIcons/checkIcon.svg';
 
 import './style.scss';
 
-type Props = {
+interface Props {
   value: boolean | undefined;
   onChange: () => void;
   label: string;
-};
+}
 
 export const Checkbox = ({ value, onChange, label }: Props) => (
   <label className="checkbox">

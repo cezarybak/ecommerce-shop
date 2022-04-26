@@ -1,12 +1,12 @@
 import './style.scss';
 
-type Props = {
+interface Props {
   value: string;
   disabled?: boolean;
   type: 'button' | 'submit';
   bg: 'white' | 'purple';
   onClick?: () => void;
-};
+}
 
 export const Button = ({
   value,

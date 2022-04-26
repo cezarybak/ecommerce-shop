@@ -3,7 +3,10 @@ import { useEffect, useState } from 'react';
 import { useDebounce } from './useDebounce';
 import { useSearchContext } from './useSerachContext';
 
-type ProductListType = { items: ProductDto[]; totalPageCount: number };
+interface ProductListType {
+  items: ProductDto[];
+  totalPageCount: number;
+}
 
 export const useProducts = () => {
   const [isLoading, setLoading] = useState(false);

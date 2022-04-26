@@ -5,12 +5,12 @@ import { ReactPortal } from 'providers';
 
 import './style.scss';
 
-type Props = {
+interface Props {
   isModelOpen: number | boolean;
   setModelOpen: Dispatch<SetStateAction<number | boolean>>;
   product: ProductDto | undefined;
   ref: RefObject<HTMLDivElement>;
-};
+}
 
 export const Modal = ({ setModelOpen, product, ref }: Props) => {
   const { description, name, image } = product!;

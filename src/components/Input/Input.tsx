@@ -4,7 +4,7 @@ import { ReactComponent as SearchIcon } from 'assets/svgIcons/searchIcon.svg';
 import './style.scss';
 import { Noop, RefCallBack } from 'react-hook-form';
 
-type Props = {
+interface Props {
   setSearch: Dispatch<SetStateAction<string>>;
   search: string;
   isSearch?: boolean;
@@ -14,7 +14,7 @@ type Props = {
   type: 'text' | 'password';
   onBlur?: Noop;
   error?: boolean;
-};
+}
 
 export const Input = ({
   search,

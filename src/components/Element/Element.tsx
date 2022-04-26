@@ -30,25 +30,28 @@ export const Element = ({
         <img src={image} alt={`${id}-product-image`} />
       </div>
       <div className="content-wraper">
-        <h3>{name}</h3>
-        <span>{description}</span>
-
-        <div className="rating">
-          {ratingMap.map((e, index) =>
-            e ? (
-              <StarOnIcon className="star-icon" key={index} />
-            ) : (
-              <StarOffIcon className="star-icon" key={index} />
-            ),
-          )}
+        <div className="top-wraper">
+          <h3>{name}</h3>
+          <span>{description}</span>
         </div>
-        <Button
-          value={active ? 'Unavailable' : 'Show details'}
-          type="button"
-          bg="purple"
-          disabled={active}
-          onClick={() => setModelOpen(id)}
-        />
+        <div className="bottom-wraper">
+          <div>
+            {ratingMap.map((e, index) =>
+              e ? (
+                <StarOnIcon className="star-icon" key={index} />
+              ) : (
+                <StarOffIcon className="star-icon" key={index} />
+              ),
+            )}
+          </div>
+          <Button
+            value={active ? 'Unavailable' : 'Show details'}
+            type="button"
+            bg="purple"
+            disabled={active}
+            onClick={() => setModelOpen(id)}
+          />
+        </div>
       </div>
     </div>
   );

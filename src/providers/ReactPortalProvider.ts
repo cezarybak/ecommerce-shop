@@ -9,10 +9,10 @@ const createWrapperAndAppendToBody = (wrapperId: string) => {
   return wrapperElement;
 };
 
-type Props = {
+interface Props {
   children: ReactNode;
   wrapperId: string;
-};
+}
 
 export const ReactPortal = ({ children, wrapperId }: Props) => {
   const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(

@@ -1,12 +1,12 @@
 import { UserDto } from 'generated';
 import { createContext, useState } from 'react';
 
-type AuthContextType = {
+interface AuthContextType {
   token: string | null;
   user: UserDto | null;
   setLocalData: (user: UserDto, token: string) => void;
   removeLocalData: () => void;
-};
+}
 
 const getLocalStorage = (name: string): any =>
   JSON.parse(localStorage.getItem(name.toString())!);

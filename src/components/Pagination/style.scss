@@ -13,7 +13,7 @@
     list-style: none;
     padding-inline-start: 0px;
 
-    & > li {
+    & > .pagination-item {
       @extend .font-14-semi-bold;
       color: $dark_grey_2;
       margin: 0px;
@@ -35,14 +35,14 @@
   }
 }
 
-.pagination-acitve {
+.pagination-item-active {
   @extend .font-14-semi-bold;
   color: $purple;
   cursor: pointer;
 }
 
-.pagination-nopointer {
+.pagination-item-nopointer {
   @extend .font-14-semi-bold;
   color: $dark_grey_2;
-  cursor: default;
+  cursor: none;
 }

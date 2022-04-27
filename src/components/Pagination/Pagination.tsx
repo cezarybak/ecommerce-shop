@@ -23,7 +23,9 @@ export const Pagination = ({ totalPageCount }: Props) => {
             <>
               {typeOfElement === 'number' ? (
                 <li
-                  className={`${e === page && 'pagination-acitve'}`}
+                  className={`${
+                    e === page ? 'pagination-item-active' : 'pagination-item'
+                  }`}
                   onClick={() => {
                     setPage(Number(e));
                   }}
@@ -32,7 +34,7 @@ export const Pagination = ({ totalPageCount }: Props) => {
                   {e}
                 </li>
               ) : (
-                <li key={index} className="pagination-nopointer">
+                <li key={index} className="pagination-item-nopointer">
                   {e}
                 </li>
               )}

@@ -25,7 +25,7 @@ export const Element = ({
 
   return (
     <div className="element">
-      <div className="image-wraper">
+      <div className={`image-wraper ${active && 'no-active'}`}>
         {!!promo && <Badge>Promo</Badge>}
         <img src={image} alt={`${id}-product-image`} />
       </div>

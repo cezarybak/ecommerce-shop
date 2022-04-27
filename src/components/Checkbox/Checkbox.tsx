@@ -10,7 +10,7 @@ interface Props {
 
 export const Checkbox = ({ value, onChange, label }: Props) => (
   <label className="checkbox">
-    <input type="checkbox" hidden onClick={() => onChange()} checked={value} />
+    <input type="checkbox" hidden onChange={() => onChange()} checked={value} />
     <CheckIcon className={`${value && 'checkbox-active'} checkbox-border`} />
     <span className="text">{label}</span>
   </label>
